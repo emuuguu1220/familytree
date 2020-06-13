@@ -15,15 +15,12 @@ public class PersonService {
     public List<Person> getAllPerson(){
         return personRepository.findAll();
     }
+
     public Person getPerson(long ID){
         return personRepository.getOne(ID);
     }
 
     public Person addPerson(Person person){
-//        Person father = personRepository.getOne(person.getFather().getId());
-//        father.getChildren().add(person);
             return personRepository.save(person);
-//        personRepository.save(father);
-//        return personRepository.getOne(person.getId());
     }
 }

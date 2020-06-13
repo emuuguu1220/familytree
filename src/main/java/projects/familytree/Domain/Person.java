@@ -1,5 +1,6 @@
 package projects.familytree.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,10 +17,16 @@ public @Data class Person {
     private String firstName;
     private String lastName;
     private String familyName;
+    @JsonIgnore
     @OneToMany(mappedBy = "father")
-    private List<Person> children;
+    private List<Person> childrenIfFather;
+    @JsonIgnore
+    @OneToMany(mappedBy = "mother")
+    private List<Person> childrenIfMother;
+
     @ManyToMany
     private List<Person> spouses;
+
     @ManyToOne
     private Person father;
     @ManyToOne
@@ -31,4 +38,7 @@ public @Data class Person {
     private Date DOD;
     @Email
     private String email;
+    public List<Person> getChildren(){
+        return gender == Gender.Эмэгтэй ? childrenIfMother : childrenIfFather;
+    }
 }

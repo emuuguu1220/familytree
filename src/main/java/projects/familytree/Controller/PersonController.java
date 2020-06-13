@@ -1,10 +1,7 @@
 package projects.familytree.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import projects.familytree.Domain.Person;
 import projects.familytree.Service.PersonService;
 
@@ -18,6 +15,11 @@ public class PersonController {
     @GetMapping("/persons")
     public List<Person> getAllPerson(){
      return personService.getAllPerson();
+    }
+    @GetMapping("/persons/{ID}")
+    public Person getPerson(@PathVariable long ID){
+        System.out.println("&&&&&&&&&&&&&&$$################# "+ID);
+        return personService.getPerson(ID);
     }
     @PostMapping("/newPerson")
     public Person addPerson(@RequestBody Person person){
