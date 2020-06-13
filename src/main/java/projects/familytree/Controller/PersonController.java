@@ -1,4 +1,4 @@
-package projects.familytree.controller;
+package projects.familytree.Controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

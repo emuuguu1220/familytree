@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Entity
 public class Person {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
     private int id;
     @Getter
@@ -52,5 +53,14 @@ public class Person {
     @Getter
     @Setter
     private String other;
-
+    @Getter
+    @Setter
+    private String maritalStatus;
+    @Getter
+    @Setter
+    private Date DOD;
+    @Getter
+    @Setter
+    @Email
+    private String email;
 }
