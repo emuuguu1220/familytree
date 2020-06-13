@@ -15,7 +15,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
-    private int id;
+    private long id;
     @Getter @Setter private Date DOB;
     @Getter @Setter private String firstName;
     @Getter @Setter private String lastName;
