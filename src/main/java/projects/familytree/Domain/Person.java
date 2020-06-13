@@ -24,7 +24,7 @@ public class Person {
     private List<Person> children;
     @Getter @Setter @ManyToMany
     private List<Person> spouses;
-    @Getter @Setter @ManyToOne
+    @Getter @Setter @ManyToOne(cascade = CascadeType.PERSIST)
     private Person father;
     @Getter @Setter @ManyToOne
     private Person mother;
