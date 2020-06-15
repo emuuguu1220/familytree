@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -24,9 +25,9 @@ public class Person {
     @Getter @Setter private String lastName;
     @Getter @Setter private String familyName;
     @OneToMany(mappedBy = "father")
-    @Getter @Setter private List<Person> childrenIfFather;
+    @Setter private List<Person> childrenIfFather;
     @OneToMany(mappedBy = "mother")
-    @Getter @Setter private List<Person> childrenIfMother;
+    @Setter private List<Person> childrenIfMother;
 
     @ManyToMany
     @Getter @Setter private List<Person> spouses;
@@ -59,8 +60,11 @@ public class Person {
     @Getter @Setter private Date DOD;
     @Email
     @Getter @Setter private String email;
-//    @JsonGetter("childrenIfMother")
-//    public List<Person> getChildren(){
-//        return gender == Gender.Эмэгтэй ? childrenIfMother : childrenIfFather;
-//    }
+    @JsonGetter("children")
+    public List<Person> getChildren(){
+        System.out.println(gender);
+        System.out.println("122222222222222222222 "+childrenIfFather);
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44 "+childrenIfMother);
+        return gender == Gender.Эмэгтэй ? childrenIfMother : childrenIfFather;
+    }
 }

@@ -8,6 +8,7 @@ import projects.familytree.Service.PersonService;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class PersonController {
     @Autowired
     PersonService personService;
